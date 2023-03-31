@@ -1,6 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QWidget, QToolTip, QPushButton, QApplication, QMessageBox, QMainWindow, QGridLayout, QVBoxLayout, QHBoxLayout, QListWidget
 from PyQt6.QtGui import QFont, QPalette, QColor
+import random
 
 
 class MainWindow(QWidget):
@@ -57,8 +58,7 @@ class MainWindow(QWidget):
         # Create a button for each grid cell
         for i in range(4):
             for j in range(4):
-                button = QPushButton(f"{i+j+8}")
-                
+                button = QPushButton(f"{random.randrange(100)}")
                 self.style_button(button, True)
                 button.clicked.connect(self.buttonClicked)
                 tables_layout.addWidget(button, i, j)

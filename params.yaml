@@ -1,0 +1,2 @@
+global_configurations:
+  test_mode: True
