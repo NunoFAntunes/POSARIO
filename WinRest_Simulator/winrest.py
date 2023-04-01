@@ -4,11 +4,19 @@ from PyQt6.QtGui import QFont, QPalette, QColor
 import random
 
 
+class TableWindow(QMainWindow):                           # <===
+    def __init__(self, table_number):
+        super().__init__()
+        self.setWindowTitle("Table " + str(table_number))
+        self.setFixedSize(1920, 1080)
+
+
 class MainWindow(QWidget):
 
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.setFixedSize(1920, 1080)
         
     def style_button(self, button, is_table_button=False):
         # Set the button properties
@@ -79,11 +87,16 @@ class MainWindow(QWidget):
         self.setLayout(layout)
         
         self.showMaximized()
+        
+    def openNewWindow(self, table_number):
+        self.w = TableWindow(table_number)
+        self.w.show()
     
     def buttonClicked(self):
             # Get the sender button's text and display it
             button = self.sender()
             print(f"Button clicked: {button.text()}")
+            self.openNewWindow(button.text())
         
     def center(self):
 
